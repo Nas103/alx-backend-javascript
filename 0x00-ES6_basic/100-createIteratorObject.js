@@ -1,3 +1,5 @@
+#!/usr/bin/env node 
+/* iterator */
 export default function createIteratorObject(report) {
   let allEmployees = [];
   for (const department of Object.values(report.allEmployees)) {
