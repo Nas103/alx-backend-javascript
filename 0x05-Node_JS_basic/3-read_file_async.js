@@ -1,0 +1,42 @@
+const fs = require('fs');
+
+function countStudents(path) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, 'utf8', (err, data) => {
+      if (err) {
+        // If the file cannot be read, reject with an error message
+        return reject(new Error('Cannot load the database'));
+      }
+
+      // Split the data into lines and filter out any empty lines
+      const lines = data.split('\n').filter(line => line.trim() !== '');
+
+      // Parse the CSV into an array of students (excluding header)
+      const students = lines.slice(1).map(line => {
+        const [firstname, lastname, age, field] = line.split(',');
+        return { firstname, field };
+      });
+
+      // Get the total number of students
+      const totalStudents = students.length;
+      console.log(`Number of students: ${totalStudents}`);
+
+      // Group students by field
+      const fields = students.reduce((acc, { firstname, field }) => {
+        if (!acc[field]) acc[field] = [];
+        acc[field].push(firstname);
+        return acc;
+      }, {});
+
+      // Log the number of students in each field and the list of their names
+      Object.keys(fields).forEach((field) => {
+        console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
+      });
+
+      // Resolve the promise once the data is processed
+      resolve();
+    });
+  });
+}
+
+module.exports = countStudents;

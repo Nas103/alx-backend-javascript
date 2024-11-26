@@ -3,10 +3,11 @@ module.exports = {
     browser: false,
     es6: true,
     jest: true,
+    node: true, // Add node environment for better Node.js support
   },
   extends: [
     'airbnb-base',
-    'plugin:jest/all',
+    'plugin:jest/recommended', // Use "recommended" instead of "all" for better compatibility
   ],
   globals: {
     Atomics: 'readonly',
@@ -27,11 +28,13 @@ module.exports = {
       'LabeledStatement',
       'WithStatement',
     ],
+    // Add compatibility for Node.js 12
+    'jest/no-deprecated-functions': 'off', // Suppress warnings about deprecated Jest APIs
   },
-  overrides:[
+  overrides: [
     {
       files: ['*.js'],
       excludedFiles: 'babel.config.js',
-    }
-  ]
+    },
+  ],
 };
