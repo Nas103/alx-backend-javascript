@@ -4,12 +4,18 @@
   "description": "Unit testing with Mocha for JavaScript.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha *.test.js"
+    "test": "mocha --loader ts-node/esm *.test.js"
   },
-  "keywords": ["unit-testing", "mocha", "javascript"],
+  "keywords": [
+    "unit-testing",
+    "mocha",
+    "javascript"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^5.1.2",
     "mocha": "^10.8.2"
-  }
+  },
+  "type": "module"
 }
