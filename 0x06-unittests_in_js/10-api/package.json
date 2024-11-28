@@ -1,0 +1,27 @@
+{
+  "name": "0x06-unittests_in_js",
+  "version": "1.0.0",
+  "description": "Unit testing with Mocha for JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha *.test.js",
+    "lint": "eslint .",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "unit-testing",
+    "mocha",
+    "javascript",
+    "sinon",
+    "chai"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "mocha": "^10.8.2",
+    "sinon": "^15.2.0",
+    "eslint": "^8.50.0"
+  },
+  "type": "module"
+}
